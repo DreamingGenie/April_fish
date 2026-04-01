@@ -4,21 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>퀴즈 맞히면 선물 쏜다!</title>
-
-  <!-- OG 태그 (카카오톡 미리보기) -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="퀴즈 맞히면 선물 쏜다! 🎁" />
-  <meta property="og:description" content="기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀" />
-  <meta property="og:url"         content="https://dreaminggenie.github.io/April_fish/quiz.html" />
-  <meta property="og:image"       content="https://dreaminggenie.github.io/April_fish/thumb.png" />
-  <meta property="og:image:width"  content="800" />
-  <meta property="og:image:height" content="400" />
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background: #f0f0f0;
@@ -28,7 +16,6 @@
       min-height: 100vh;
       padding: 20px 0 40px;
     }
-
     .card {
       width: 100%;
       max-width: 420px;
@@ -37,17 +24,13 @@
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
-
-    /* ── 상단 노란 헤더 ── */
     .header {
       background: #FFE033;
       padding: 32px 24px 28px;
       position: relative;
       overflow: hidden;
     }
-
-    .header::before,
-    .header::after {
+    .header::before, .header::after {
       content: '';
       position: absolute;
       border-radius: 50%;
@@ -63,7 +46,6 @@
       background: #FFD000;
       top: 10px; right: -10px;
     }
-
     .deco-dots {
       position: absolute;
       top: 14px; right: 50%;
@@ -73,7 +55,6 @@
       border-radius: 50%;
       opacity: 0.7;
     }
-
     .header-title {
       font-size: 28px;
       font-weight: 900;
@@ -84,7 +65,6 @@
       z-index: 1;
       letter-spacing: -1px;
     }
-
     .quiz-badge-wrap {
       display: flex;
       justify-content: center;
@@ -101,7 +81,6 @@
       border-radius: 20px;
       letter-spacing: 1px;
     }
-
     .quiz-box {
       background: #FFFBE6;
       border-radius: 12px;
@@ -116,8 +95,6 @@
       font-weight: 700;
       color: #1a1a1a;
     }
-
-    /* ── 선물 정보 ── */
     .gift-row {
       display: flex;
       align-items: center;
@@ -143,8 +120,6 @@
       font-weight: 700;
       color: #1a1a1a;
     }
-
-    /* ── 설명 텍스트 ── */
     .desc {
       padding: 20px 20px 4px;
       font-size: 15px;
@@ -152,8 +127,6 @@
       line-height: 1.7;
       font-weight: 500;
     }
-
-    /* ── 퀴즈 풀기 버튼 ── */
     .btn-wrap {
       padding: 14px 20px 20px;
     }
@@ -173,9 +146,8 @@
       transition: background 0.15s;
     }
     .btn-quiz:hover { background: #e0e0e0; }
-    .btn-quiz:active { background: #d0d0d0; }
 
-    /* ── 카카오 공유 버튼 ── */
+    /* 카카오 공유 버튼 - 선물하기 스타일 */
     .kakao-gift-row {
       display: flex;
       align-items: center;
@@ -184,6 +156,7 @@
       border-top: 1px solid #f0f0f0;
       cursor: pointer;
       transition: background 0.15s;
+      background: #fff;
     }
     .kakao-gift-row:hover { background: #fffbe6; }
     .kakao-gift-left {
@@ -195,9 +168,8 @@
       font-weight: 500;
     }
     .kakao-gift-left span.emoji { font-size: 18px; }
-    .kakao-arrow { color: #aaa; font-size: 16px; }
+    .kakao-arrow { color: #aaa; font-size: 18px; }
 
-    /* 타이머 */
     .timer-bar {
       background: #FFE033;
       text-align: center;
@@ -212,27 +184,21 @@
 <body>
 
 <div class="card">
-
-  <!-- 타이머 -->
   <div class="timer-bar">
     ⏰ 남은 시간: <span id="countdown">05:00</span>
   </div>
 
-  <!-- 헤더 -->
   <div class="header">
     <div class="deco-dots"></div>
     <div class="header-title">퀴즈 맞히면<br>선물 쏜다!</div>
-
     <div class="quiz-badge-wrap">
       <span class="quiz-badge">Quiz</span>
     </div>
-
     <div class="quiz-box">
       <div class="quiz-question">저는 누구일까요? 3</div>
     </div>
   </div>
 
-  <!-- 선물 안내 -->
   <div class="gift-row">
     <div class="gift-icon">🎁</div>
     <div class="gift-text-wrap">
@@ -241,26 +207,23 @@
     </div>
   </div>
 
-  <!-- 설명 -->
   <div class="desc">
     퀴즈 선물게임을 시작합니다!<br>
     기회는 단 5분간, 정답자 3명에게!
   </div>
 
-  <!-- 퀴즈 풀기 버튼 -->
   <div class="btn-wrap">
     <a class="btn-quiz" href="https://dreaminggenie.github.io/April_fish/april-fool.html">퀴즈 풀기</a>
   </div>
 
-  <!-- 카카오 공유 버튼 -->
+  <!-- 카카오톡 선물하기 스타일 공유 버튼 -->
   <div class="kakao-gift-row" onclick="shareKakao()">
     <div class="kakao-gift-left">
       <span class="emoji">🎀</span>
-      카카오톡으로 공유하기
+      카카오톡 선물하기
     </div>
     <span class="kakao-arrow">›</span>
   </div>
-
 </div>
 
 <!-- 카카오 SDK -->
@@ -269,7 +232,7 @@
         crossorigin="anonymous"></script>
 
 <script>
-  // ✏️ 여기에 본인 JavaScript 키를 입력하세요
+  // ✏️ 여기에 본인 JavaScript 키 입력
   Kakao.init('7861759df3a193ff66a6ddd57b882a8d');
 
   function shareKakao() {
@@ -277,11 +240,14 @@
       objectType: 'feed',
       content: {
         title: '퀴즈 맞히면 선물 쏜다! 🎁',
-        description: '기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀',
-        imageUrl: 'https://dreaminggenie.github.io/April_fish/thumb.png',
+        description: '기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀\n지금 바로 도전하세요!',
+        // 썸네일: quiz.html 페이지를 캡처한 이미지 URL
+        // thumb.png를 GitHub에 올리면 아래 주석 해제
+        // imageUrl: 'https://dreaminggenie.github.io/April_fish/thumb.png',
+        imageUrl: 'https://mud-kage.kakao.com/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8IIVB9BKIYIK/kakaolink40_original.png',
         link: {
           mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
-          webUrl:       'https://dreaminggenie.github.io/April_fish/quiz.html',
+          webUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
         },
       },
       buttons: [
@@ -289,7 +255,7 @@
           title: '퀴즈 풀러 가기 🎯',
           link: {
             mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
-            webUrl:       'https://dreaminggenie.github.io/April_fish/quiz.html',
+            webUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
           },
         },
       ],
@@ -299,15 +265,11 @@
   // 5분 카운트다운
   let total = 5 * 60;
   const el = document.getElementById('countdown');
-
   function pad(n) { return String(n).padStart(2, '0'); }
-
   const timer = setInterval(() => {
     total--;
     if (total <= 0) { clearInterval(timer); el.textContent = '종료!'; return; }
-    const m = Math.floor(total / 60);
-    const s = total % 60;
-    el.textContent = `${pad(m)}:${pad(s)}`;
+    el.textContent = `${pad(Math.floor(total/60))}:${pad(total%60)}`;
   }, 1000);
 </script>
 
