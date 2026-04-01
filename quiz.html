@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- 기본 OG 태그 -->
-<meta property="og:type"        content="website" />
-<meta property="og:title"       content="퀴즈 맞히면 선물 쏜다! 🎁" />
-<meta property="og:description" content="기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀" />
-<meta property="og:url"         content="https://[아이디].github.io/april-fool-quiz/quiz.html" />
-
-<!-- 썸네일 이미지 (노란 배경 이미지 URL) -->
-<meta property="og:image"       content="https://[아이디].github.io/april-fool-quiz/thumb.png" />
-<meta property="og:image:width"  content="800" />
-<meta property="og:image:height" content="400" />
-
-<!-- 카카오톡 전용 -->
-<meta property="kakao:title"       content="퀴즈 맞히면 선물 쏜다! 🎁" />
-<meta property="kakao:description" content="기회는 단 5분! 지금 바로 도전하세요!" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>퀴즈 맞히면 선물 쏜다!</title>
+
+  <!-- OG 태그 (카카오톡 미리보기) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="퀴즈 맞히면 선물 쏜다! 🎁" />
+  <meta property="og:description" content="기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀" />
+  <meta property="og:url"         content="https://dreaminggenie.github.io/April_fish/quiz.html" />
+  <meta property="og:image"       content="https://dreaminggenie.github.io/April_fish/thumb.png" />
+  <meta property="og:image:width"  content="800" />
+  <meta property="og:image:height" content="400" />
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
 
@@ -50,7 +46,6 @@
       overflow: hidden;
     }
 
-    /* 배경 도형 장식 */
     .header::before,
     .header::after {
       content: '';
@@ -90,7 +85,6 @@
       letter-spacing: -1px;
     }
 
-    /* Quiz 뱃지 */
     .quiz-badge-wrap {
       display: flex;
       justify-content: center;
@@ -108,7 +102,6 @@
       letter-spacing: 1px;
     }
 
-    /* 퀴즈 문제 박스 */
     .quiz-box {
       background: #FFFBE6;
       border-radius: 12px;
@@ -140,7 +133,6 @@
       font-size: 26px;
       flex-shrink: 0;
     }
-    .gift-text-wrap {}
     .gift-label {
       font-size: 11px;
       color: #999;
@@ -183,7 +175,7 @@
     .btn-quiz:hover { background: #e0e0e0; }
     .btn-quiz:active { background: #d0d0d0; }
 
-    /* ── 카카오 선물하기 ── */
+    /* ── 카카오 공유 버튼 ── */
     .kakao-gift-row {
       display: flex;
       align-items: center;
@@ -191,7 +183,9 @@
       padding: 14px 20px;
       border-top: 1px solid #f0f0f0;
       cursor: pointer;
+      transition: background 0.15s;
     }
+    .kakao-gift-row:hover { background: #fffbe6; }
     .kakao-gift-left {
       display: flex;
       align-items: center;
@@ -203,7 +197,7 @@
     .kakao-gift-left span.emoji { font-size: 18px; }
     .kakao-arrow { color: #aaa; font-size: 16px; }
 
-    /* 타이머 표시 */
+    /* 타이머 */
     .timer-bar {
       background: #FFE033;
       text-align: center;
@@ -253,23 +247,55 @@
     기회는 단 5분간, 정답자 3명에게!
   </div>
 
-  <!-- 버튼 -->
+  <!-- 퀴즈 풀기 버튼 -->
   <div class="btn-wrap">
-    <a class="btn-quiz" href="april-fool.html">퀴즈 풀기</a>
+    <a class="btn-quiz" href="https://dreaminggenie.github.io/April_fish/april-fool.html">퀴즈 풀기</a>
   </div>
 
-  <!-- 카카오 선물하기 -->
-<div class="kakao-gift-row" onclick="shareKakao()">
-  <div class="kakao-gift-left">
-    <span class="emoji">🎀</span>
-    카카오톡으로 공유하기
+  <!-- 카카오 공유 버튼 -->
+  <div class="kakao-gift-row" onclick="shareKakao()">
+    <div class="kakao-gift-left">
+      <span class="emoji">🎀</span>
+      카카오톡으로 공유하기
+    </div>
+    <span class="kakao-arrow">›</span>
   </div>
-  <span class="kakao-arrow">›</span>
-</div>
 
 </div>
+
+<!-- 카카오 SDK -->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
+        integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
+        crossorigin="anonymous"></script>
 
 <script>
+  // ✏️ 여기에 본인 JavaScript 키를 입력하세요
+  Kakao.init('7861759df3a193ff66a6ddd57b882a8d');
+
+  function shareKakao() {
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '퀴즈 맞히면 선물 쏜다! 🎁',
+        description: '기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀',
+        imageUrl: 'https://dreaminggenie.github.io/April_fish/thumb.png',
+        link: {
+          mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
+          webUrl:       'https://dreaminggenie.github.io/April_fish/quiz.html',
+        },
+      },
+      buttons: [
+        {
+          title: '퀴즈 풀러 가기 🎯',
+          link: {
+            mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
+            webUrl:       'https://dreaminggenie.github.io/April_fish/quiz.html',
+          },
+        },
+      ],
+    });
+  }
+
   // 5분 카운트다운
   let total = 5 * 60;
   const el = document.getElementById('countdown');
@@ -284,38 +310,6 @@
     el.textContent = `${pad(m)}:${pad(s)}`;
   }, 1000);
 </script>
-<!-- 카카오 SDK -->
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
-        integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4"
-        crossorigin="anonymous"></script>
 
-<script>
-  // 카카오 앱 키 (아래 5-1에서 발급)
-  Kakao.init('YOUR_JAVASCRIPT_KEY');
-
-  function shareKakao() {
-    Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '퀴즈 맞히면 선물 쏜다! 🎁',
-        description: '기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀',
-        imageUrl: 'https://[아이디].github.io/april-fool-quiz/thumb.png',
-        link: {
-          mobileWebUrl: 'https://[아이디].github.io/april-fool-quiz/quiz.html',
-          webUrl:       'https://[아이디].github.io/april-fool-quiz/quiz.html',
-        },
-      },
-      buttons: [
-        {
-          title: '퀴즈 풀러 가기',
-          link: {
-            mobileWebUrl: 'https://[아이디].github.io/april-fool-quiz/quiz.html',
-            webUrl:       'https://[아이디].github.io/april-fool-quiz/quiz.html',
-          },
-        },
-      ],
-    });
-  }
-</script>
 </body>
 </html>
