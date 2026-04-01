@@ -235,29 +235,35 @@
   Kakao.init('7861759df3a193ff66a6ddd57b882a8d');
 
   function shareKakao() {
-    Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '퀴즈 맞히면 선물 쏜다! 🎁',
-        description: '기회는 단 5분! 정답자 3명에게 선물을 드립니다 🎀\n지금 바로 도전하세요!',
-
-        imageUrl: 'https://dreaminggenie.github.io/April_fish/thumb.png',
+  Kakao.Share.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: '[카카오톡 선물하기] 선물이 도착했습니다!', // 제목도 낚시성 있게 변경 추천
+      description: '마음을 담은 선물이 도착했습니다. 7일 이내에 수락해주세요.', // 설명 변경 추천
+      
+      // 👇 업로드한 이미지의 URL로 교체하세요. (중요!)
+      imageUrl: 'https://dreaminggenie.github.io/April_fish/thumb.png', 
+      
+      link: {
+        // 이미지를 클릭했을 때 이동할 주소 (낚시 페이지)
+        mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/april-fool.html',
+        webUrl: 'https://dreaminggenie.github.io/April_fish/april-fool.html',
+      },
+    },
+    
+    // 👇 이미지 아래에 [퀴즈 풀기] 버튼을 만듭니다.
+    buttons: [
+      {
+        title: '퀴즈 풀기', // 버튼 문구
         link: {
-          mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
-          webUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
+          // 버튼을 클릭했을 때 이동할 주소 (낚시 페이지)
+          mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/april-fool.html',
+          webUrl: 'https://dreaminggenie.github.io/April_fish/april-fool.html',
         },
       },
-      buttons: [
-        {
-          title: '퀴즈 풀러 가기 🎯',
-          link: {
-            mobileWebUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
-            webUrl: 'https://dreaminggenie.github.io/April_fish/quiz.html',
-          },
-        },
-      ],
-    });
-  }
+    ],
+  });
+}
 
   // 5분 카운트다운
   let total = 5 * 60;
